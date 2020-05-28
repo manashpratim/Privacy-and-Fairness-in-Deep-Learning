@@ -21,6 +21,6 @@ Adversarial Attacks, Defences, and Mitigating Biases
 
 [6] Tolga Bolukbasi, Kai-Wei Chang, James Y Zou, Venkatesh Saligrama, and Adam T Kalai. Man is to computer programmer as woman is to homemaker? debiasing word embeddings. In Advances in neural information processing systems, pages 4349–4357, 2016.
 
-Note: This project is part of my Homeworks. Current CMU students please refrain from going through the codes.
+**Note: This project is part of my Homeworks. Current CMU students please refrain from going through the codes.
 
 
