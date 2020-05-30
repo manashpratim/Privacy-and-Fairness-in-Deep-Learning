@@ -1,6 +1,6 @@
 # Security-and-Fairness-in-Deep-Learning
 Adversarial Attacks, Defences, and Mitigating Biases
-# Overview
+## Overview
 
 •	Implemented white-box attacks like Projected Gradient Descent [1], Carlini-Wagner L2 [2] (hw4_part1.py) and black-box attacks like Shadow Model Attacks [3] (hw5_part1.py)
 
@@ -8,17 +8,17 @@ Adversarial Attacks, Defences, and Mitigating Biases
 
 •	Mitigated biases in deep learning models using GAN like adversarial training to achieve demographic parity, equality of opportunity and equality of odds [5] (hw5_part2.py) as well as debiasing of word embeddings [6] (hw5_part3.py)
 
-# Experiments and Results
+## Experiments and Results
 
 **The experiments of White-box Attacks and Defences are done using the MNIST dataset.**
 
-## White-box Attacks
+### White-box Attacks
 
 The goal of an attack algorithm is to create adversarial samples that are as close to the original samples as possible such that humans can not detect the difference but the model gives wrong predictions on the adversarial samples. 
 
 The Projected Gradient Descent has two modes: Clip and Projection.
 
-### Projected Gradient Descent (Clip)
+#### Projected Gradient Descent (Clip)
 
 <p align="center">
   <img width="460" height="300" src="https://github.com/manashpratim/Privacy-and-Fairness-in-Deep-Learning/blob/master/pgdclip1.PNG">
@@ -41,7 +41,7 @@ In the second image, the true label is 0, the model predicted 0 for the original
 
 We, humans, can clearly distinguish between the original and adversarial samples. Hence, the algorithm is not very good even though the success rate of the algorithm is 100%.
 
-### Projected Gradient Descent (Projection)
+#### Projected Gradient Descent (Projection)
 
 <p align="center">
   <img width="460" height="300" src="https://github.com/manashpratim/Privacy-and-Fairness-in-Deep-Learning/blob/master/pgdproject1.PNG">
@@ -55,7 +55,7 @@ This algorithm has a success rate of 93.75%
 
 We, humans, can clearly distinguish between the original and adversarial samples. Hence, the algorithm is not very good even though the success rate of the algorithm is 93.75%. It is worser than PGD (Clip).
 
-### Carlini-Wagner L2
+#### Carlini-Wagner L2
 
 <p align="center">
   <img width="460" height="300" src="https://github.com/manashpratim/Privacy-and-Fairness-in-Deep-Learning/blob/master/cwl21.PNG">
@@ -75,7 +75,7 @@ We, humans, can not clearly distinguish between the original and adversarial sam
 
 Comparison of the success rate of the three algorithms.
 
-## Defences
+### Defences
 
 I have attacked the models using the Carlini-Wagner L2.
 
@@ -87,15 +87,15 @@ Before the model was trained with a defence, the success rate of the attack was 
 
 After defence, the success rate of the attacker has decreased for both the defences. The success rate against Madry's Defence (PreMadry) is lower than Augmented Defence. Hence, Madry's Defence is better than Augmented Defence.
 
-## Black-box Attack
+### Black-box Attack
 
 **The experiments of this section are done using the CIFAR10 dataset.**
 
-### Membership Inference Attack
+#### Membership Inference Attack
 
 A membership inference is the scenario in which an adversary seeks to determine if a given instance was used for training a given model. The adversary does not have direct access to the model, they only have query access in that they can ask the model to make predictions on chosen instances and observe the outcome. Shadow Model Attack is a black-box membership inference attack.
 
-### Shadow Model Attack
+#### Shadow Model Attack
 
 In the shadow model attack, the attacker uses the shadow dataset S  to create a predictor for the question "was x used to train this model?". The shadow dataset mostly comes from the same distribution as the training dataset.
 
@@ -126,7 +126,7 @@ Input (32x32x3) -> Flatten -> Dense (128,ReLU) -> Dense (64,ReLU) -> Dense (32,R
 
 Input (20) -> Dense (40,ReLU) -> Output (1,Sigmoid)
 
-### Attack Success Rate vs Overfitting of the Model being Attacked
+#### Attack Success Rate vs Overfitting of the Model being Attacked
 
 To measure overfitting of the model being attacked, I have defined “Overfit” which is the difference in training and test accuracy of the model being attacked.
 
@@ -154,7 +154,7 @@ Here, I have created 4 different training models:
 
 From the plots, we can see that attack success decreases with decrease in overfitting.
 
-### Can an attack be carried out if the Shadow Model does not have the exact architecture as the Model being attacked?
+#### Can an attack be carried out if the Shadow Model does not have the exact architecture as the Model being attacked?
 
 Here, I have created 4 different shadow models:
 
@@ -176,7 +176,7 @@ Similarity of the Shadow models to the model under attack are 1, 0.85, 0.5, 0.4 
 
 From the plots, we can see that the architecture of the shadow model does not have to be exact as the model being attack.
 
-### Can the Shadow Model Attack be applied to a White-box Scenerio?
+#### Can the Shadow Model Attack be applied to a White-box Scenerio?
 
 I define "Target model" as the model that was trained on the Training data. I have used the baseline architectures for this experiment.
 
@@ -190,7 +190,7 @@ In this experiment, I have used shadow model attack on four different types of w
 
 4) Similar to 3 but Target model is not trained again on the training data. It is used to predict S_in and S_out. S_in and S_out are splits from the training data.
 
-## Mitigating Bias with Adversarial Learning
+### Mitigating Bias with Adversarial Learning
 **In this experiment, I have used the UCI Adult Dataset**
 
 **Demographic Parity**
@@ -205,7 +205,7 @@ Pr(^Y = 1 | Y = 1, Z = 0) = Pr( ^Y = 1 | Y = 1, Z = 1)
 
 where  ^Y  is predicted label, Y is true label and Z ~ (0,1) are two groups (genders, etc.).
 
-### Demographic Parity
+#### Demographic Parity
 
 **Before Model is Trained for Demographic Parity**
 <p align="center">
@@ -221,7 +221,7 @@ Pr(^Y = 1 | Z = 0) = 0.033, Pr(^Y = 1 | Z = 1) = 0.1858
 
 Pr(^Y = 1 | Z = 0) = 0.1216, Pr(^Y = 1 | Z = 1) = 0.1047
 
-### Equality of Opportunity
+#### Equality of Opportunity
 
 **Before Model is Trained for Equality of Opportunity**
 <p align="center">
@@ -237,7 +237,7 @@ Pr(^Y = 1 | Y = 1, Z = 0) = 0.1772, Pr( ^Y = 1 | Y = 1, Z = 1) = 0.4832
 
 Pr(^Y = 1 | Y = 1, Z = 0) = 0.4153, Pr( ^Y = 1 | Y = 1, Z = 1) = 0.3753
 
-## Mitigating Bias in Word Embeddings
+### Mitigating Bias in Word Embeddings
 **Here, I have used GoogleNews-vectors-negative300 pretrained word2vec embedding**
 
 **Before Debiasing**
@@ -250,7 +250,7 @@ Pr(^Y = 1 | Y = 1, Z = 0) = 0.4153, Pr( ^Y = 1 | Y = 1, Z = 1) = 0.3753
   <img width="400" height="300" src="https://github.com/manashpratim/Privacy-and-Fairness-in-Deep-Learning/blob/master/plot7.png">
 </p>
 
-# References
+## References
 [1] Christian Szegedy, Wojciech Zaremba, Ilya Sutskever, Joan Bruna, Dumitru Erhan, Ian J. Goodfellow, and Rob Fergus. Intriguing properties of neural networks. CoRR, abs/1312.6199, 2013.
 
 [2] Nicholas Carlini and David Wagner. Towards evaluating the robustness of neural networks. In 2017 ieee symposium on security and privacy (sp), pages 39–57. IEEE, 2017.
