@@ -1,6 +1,6 @@
 # Privacy-and-Fairness-in-Deep-Learning
 Adversarial Attacks, Defences, and Mitigating Biases
-# Description
+# Overview
 
 •	Implemented white-box attacks like Projected Gradient Descent [1], Carlini-Wagner L2 [2] (hw4_part1.py) and black-box attacks like Shadow Model Attacks [3] (hw5_part1.py)
 
@@ -175,6 +175,22 @@ Similarity of the Shadow models to the model under attack are 1, 0.85, 0.5, 0.4 
 </p>
 
 From the plots, we can see that the architecture of the shadow model does not have to be exact as the model being attack.
+
+### Can the Shadow Model Attack be applied to a White-box Scenerio?
+
+I define "Target model" as the model that was trained on the Training data. I have used the baseline architectures for this experiment.
+
+In this experiment, I have used shadow model attack on four different types of white-box scenarios:
+
+1. When the Target model is also trained on the shadow data and used to predict S_in and S_out. S_in and S_out are splits from the shadow data.
+
+2. When the Target model is used to predict S_in and S_out without being trained on the shadow data. S_in and S_out are splits from the shadow data.
+
+3) When the Target model is now trained on the training data again and used to predict S_in and S_out. S_in and S_out are splits from the training data.
+
+4) Similar to 3 but Target model is not trained again on the training data. It is used to predict S_in and S_out. S_in and S_out are splits from the training data.
+
+## 
 
 # References
 [1] Christian Szegedy, Wojciech Zaremba, Ilya Sutskever, Joan Bruna, Dumitru Erhan, Ian J. Goodfellow, and Rob Fergus. Intriguing properties of neural networks. CoRR, abs/1312.6199, 2013.
