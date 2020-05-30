@@ -1,4 +1,4 @@
-# Privacy-and-Fairness-in-Deep-Learning
+# Security-and-Fairness-in-Deep-Learning
 Adversarial Attacks, Defences, and Mitigating Biases
 # Overview
 
@@ -190,7 +190,65 @@ In this experiment, I have used shadow model attack on four different types of w
 
 4) Similar to 3 but Target model is not trained again on the training data. It is used to predict S_in and S_out. S_in and S_out are splits from the training data.
 
-## 
+## Mitigating Bias with Adversarial Learning
+**In this experiment, I have used the UCI Adult Dataset**
+
+**Demographic Parity**
+
+Pr(^Y = 1 | Z = 0) = Pr( ^Y = 1 | Z = 1)
+
+where Pr is probability, ^Y  is predicted label and Z ~ (0,1) are two groups (genders, etc.) in the data.
+
+**Equality of Opportunity**
+
+Pr(^Y = 1 | Y = 1, Z = 0) = Pr( ^Y = 1 | Y = 1, Z = 1)
+
+where  ^Y  is predicted label, Y is true label and Z ~ (0,1) are two groups (genders, etc.).
+
+### Demographic Parity
+
+**Before Model is Trained for Demographic Parity**
+<p align="center">
+  <img width="300" height="30" src="https://github.com/manashpratim/Privacy-and-Fairness-in-Deep-Learning/blob/master/dem1.PNG">
+</p>
+
+Pr(^Y = 1 | Z = 0) = 0.033, Pr(^Y = 1 | Z = 1) = 0.1858
+
+**After Model is Trained for Demographic Parity**
+<p align="center">
+  <img width="400" height="100" src="https://github.com/manashpratim/Privacy-and-Fairness-in-Deep-Learning/blob/master/dem2.PNG">
+</p>
+
+Pr(^Y = 1 | Z = 0) = 0.1216, Pr(^Y = 1 | Z = 1) = 0.1047
+
+### Equality of Opportunity
+
+**Before Model is Trained for Equality of Opportunity**
+<p align="center">
+  <img width="300" height="30" src="https://github.com/manashpratim/Privacy-and-Fairness-in-Deep-Learning/blob/master/eq1.PNG">
+</p>
+
+Pr(^Y = 1 | Y = 1, Z = 0) = 0.1772, Pr( ^Y = 1 | Y = 1, Z = 1) = 0.4832
+ 
+**After Model is Trained for Equality of Opportunity**
+<p align="center">
+  <img width="400" height="100" src="https://github.com/manashpratim/Privacy-and-Fairness-in-Deep-Learning/blob/master/eq2.PNG">
+</p>
+
+Pr(^Y = 1 | Y = 1, Z = 0) = 0.4153, Pr( ^Y = 1 | Y = 1, Z = 1) = 0.3753
+
+## Mitigating Bias in Word Embeddings
+**Here, I have used GoogleNews-vectors-negative300 pretrained word2vec embedding**
+
+**Before Debiasing**
+<p align="center">
+  <img width="400" height="300" src="https://github.com/manashpratim/Privacy-and-Fairness-in-Deep-Learning/blob/master/plot6.PNG">
+</p>
+
+**After Debiasing**
+<p align="center">
+  <img width="400" height="300" src="https://github.com/manashpratim/Privacy-and-Fairness-in-Deep-Learning/blob/master/plot7.png">
+</p>
 
 # References
 [1] Christian Szegedy, Wojciech Zaremba, Ilya Sutskever, Joan Bruna, Dumitru Erhan, Ian J. Goodfellow, and Rob Fergus. Intriguing properties of neural networks. CoRR, abs/1312.6199, 2013.
